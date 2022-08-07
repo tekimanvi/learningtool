@@ -32,7 +32,7 @@ let myFlashcards = [ {
     },
     {
     "question": "Name this species of bird.",
-    "image" : "images/hummingbird-2139279__340.webp",
+    "image" : "imag/hummingbird-2139279__340.webp",
     "answer": "Hummingbird"
     }
   ];
