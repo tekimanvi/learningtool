@@ -42,7 +42,7 @@ let myFlashcards = [ {
 const db = getDatabase();
 const dbLocation = {};
 
-dbLocation['deck/flashcards/'] = myFlashcards;
+dbLocation['/deck/flashcards/'] = myFlashcards;
 update (ref(db), dbLocation);
 
 
