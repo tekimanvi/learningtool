@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-app.js";
+
+import { getDatabase, ref, set, update, child, get, onValue, remove } from  "https://www.gstatic.com/firebasejs/9.9.2/firebase-database.js ("https://www.gstatic.com/firebasejs/9.9.2/firebase-database.js)";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.1/firebase-analytics.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -38,30 +39,11 @@ let myFlashcards = [ {
   ];
 
 
-let dbLocation = firebase.database().ref('deck/flashcards'); 
-dbLocation.set(myFlashcards);
+const db = getDatabase();
+const dbLocation = {};
 
-// As before,make the database point to the location where the data exists
-// If the location doesn't exist it will be created but there will be nothing to retirieve
-let fc = firebase.database().ref('deck/flashy');
-
-// A variable to store the JSON results in a human readable format
-let jsonString;
-
-// Tell Firebase to retrieve your data
-fc.on("value", function(retrieve) {
-  
-    //Get the raw JSON data back from the database
-    let queryData = retrieve.val();
-    
-    // Turn the data into a JSON String
-    jsonString = JSON.stringify(queryData);
-});
-
-// Print the data out as a JSON string or otherwise manipulate it
-console.log (' JSON string:' + jsonString )
-
-
+dbLocation['deck/flashcards/'] = myFlashcards;
+update (ref(db), dbLocation);
 
 
 
